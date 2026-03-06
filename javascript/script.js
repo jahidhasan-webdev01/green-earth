@@ -1,5 +1,4 @@
 let cart = [];
-let selectedCategory = "All Trees";
 
 const loadCategories = async () => {
     isCategoryLoading(true);
