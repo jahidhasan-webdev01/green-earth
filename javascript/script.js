@@ -1,20 +1,21 @@
 let cart = [];
+let selectedCategory = "All Trees";
 
 const loadCategories = async () => {
-    isLoading(true);
+    isCategoryLoading(true);
     const url = "https://openapi.programming-hero.com/api/categories";
 
     const result = await fetch(url);
     const data = await result.json();
 
     displayCategory(data.categories);
-    isLoading(false)
+    isCategoryLoading(false);
 
 }
 
 const displayCategory = (data) => {
     data.unshift({
-        "category_name": "All Tree",
+        "category_name": "All Trees",
         "id": 0,
         "small_description": "Explore all types of trees including fruit, flowering, and ornamental varieties in one place."
     })
@@ -23,8 +24,8 @@ const displayCategory = (data) => {
         container.innerHTML = "";
         data.forEach((cat, index) => {
             const button = document.createElement("button");
-            button.onclick = () => loadCategoryData(cat.id);
-            button.className = `${index === 0 ? "bg-success text-white" : "hover:bg-success hover:text-white"} w-full text-left px-2 py-1 rounded font-semibold cursor-pointer border border-gray-400`;
+            button.onclick = () => loadCategoryData(cat.id, button);
+            button.className = `${index === 0 ? "bg-success text-white" : "hover:bg-success hover:text-white"} btn-category w-full text-left px-2 py-1 rounded font-semibold cursor-pointer border border-gray-400`;
             button.innerText = cat?.category_name;
 
             container.appendChild(button);
@@ -32,7 +33,17 @@ const displayCategory = (data) => {
     })
 }
 
-const loadCategoryData = async (cat_id = 0) => {
+const loadCategoryData = async (cat_id = 0, selectedButton) => {
+    if (selectedButton) {
+        const allButtons = document.querySelectorAll(".btn-category")
+
+        allButtons.forEach((btn) => {
+            btn.classList.remove("bg-success", "text-white");
+        })
+
+        selectedButton.classList.add("bg-success", "text-white");
+    }
+
     isCardLoading(true)
     let url = "";
 
@@ -45,8 +56,10 @@ const loadCategoryData = async (cat_id = 0) => {
     const result = await fetch(url);
     const data = await result.json();
 
+
+    isCardLoading(false);
+
     displayTrees(data?.plants);
-    isCardLoading(false)
 }
 
 const displayTrees = (data) => {
@@ -119,7 +132,9 @@ const updateCart = () => {
     }, 0)
 
     document.getElementById("total-count").innerText = `${total}`;
-    document.getElementById("cart-item-count").innerText = `${cart.length}`;
+    document.querySelectorAll(".cart-item-count").forEach(item => {
+        item.innerText = cart.length;
+    });
 
     if (cart.length > 0) {
         cartItemsContainer.classList.remove("hidden");
@@ -140,23 +155,27 @@ const deleteFromCart = (plantName) => {
     updateCart();
 }
 
-const isLoading = (status) => {
-    // const loadingContainer = document.getElementById("loading-container");
+const isCategoryLoading = (status) => {
+    const loadingContainer = document.getElementById("full-loading-container");
 
-    // if (status) {
-    //     loadingContainer.classList.remove("hidden")
-    // } else {
-    //     loadingContainer.classList.add("hidden")
-    // }
+    if (status) {
+        loadingContainer.classList.remove("hidden");
+        document.getElementById("full-container").classList.add("hidden");
+    } else {
+        loadingContainer.classList.add("hidden");
+        document.getElementById("full-container").classList.remove("hidden");
+    }
 }
 
 const isCardLoading = (status) => {
     const loadingContainer = document.getElementById("card-loading-container");
 
     if (status) {
-        loadingContainer.classList.remove("hidden")
+        loadingContainer.classList.remove("hidden");
+        document.getElementById("plant-container").classList.add("hidden");
     } else {
-        loadingContainer.classList.add("hidden")
+        loadingContainer.classList.add("hidden");
+        document.getElementById("plant-container").classList.remove("hidden");
     }
 }
 

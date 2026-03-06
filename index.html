@@ -58,7 +58,7 @@
                     <a class="btn btn-sm btn-warning text-green-600 font-bold rounded-4xl">Plant a Tree</a>
                     <button class="xl:hidden btn btn-sm btn-neautral rounded-4xl">
                         <span class="text-black font-bold">cart</span>
-                        <div class="badge badge-sm badge-neautral">00</div>
+                        <div class="badge badge-sm badge-neautral cart-item-count">00</div>
                     </button>
                 </div>
             </div>
@@ -67,9 +67,7 @@
 
     <section class="w-full px-2 md:px-0 lg:w-10/12 mx-auto pb-5">
         <h1 class="text-center py-5 lg:py-10 font-bold text-xl">Choose Your Trees</h1>
-        <div id="category-loading-container" class="flex min-h-[50vh] items-center justify-center hidden">
-            <span class="loading loading-spinner loading-xl"></span>
-        </div>
+
         <!-- Sidebar: For small device only -->
         <div class="lg:hidden">
             <div
@@ -78,7 +76,11 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-12 gap-5">
+        <div id="full-loading-container" class="flex min-h-[80vh] items-center justify-center hidden">
+            <span class="loading loading-spinner loading-xl"></span>
+        </div>
+
+        <div id="full-container" class="grid grid-cols-12 gap-5">
             <!-- sidebar -->
             <div class="lg:col-span-2 sticky top-10 self-start hidden lg:block">
                 <h3 class="font-bold">Categories</h3>
@@ -89,18 +91,18 @@
 
             <!-- cards area -->
             <div class="col-span-12 lg:col-span-10 xl:col-span-8 min-h-screen">
-                <div id="plant-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                </div>
                 <div id="card-loading-container" class="flex min-h-[50vh] items-center justify-center hidden">
                     <span class="loading loading-spinner loading-xl"></span>
+                </div>
+                <div id="plant-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 </div>
             </div>
 
             <!-- cart area -->
-            <div class="bg-white xl:col-span-2 rounded px-2 py-1 hidden xl:block">
+            <div class="bg-white xl:col-span-2 rounded px-2 py-1 min-h-[60vh] hidden xl:block sticky top-10 self-start overflow-y-auto whitespace-nowrap no-scrollbar scroll-smooth">
                 <div class="flex justify-between">
                     <h3 class="font-bold">Your Cart</h3>
-                    <p id="cart-item-count" class="font-bold">0</p>
+                    <p class="font-bold cart-item-count">0</p>
                 </div>
                 </h3>
                 <div id="cart-items" class="mt-3 space-y-2 border-b border-gray-600 border-dotted pb-4 hidden">
