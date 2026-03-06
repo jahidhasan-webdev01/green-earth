@@ -17,9 +17,120 @@
 
     <title>Green Earth</title>
     <link rel="shortcut icon" href="./assets/hero-leaf1.png" type="image/x-icon">
+
+    <style>
+        * {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-green-50">
+    <header class="bg-success">
+        <nav class="w-full md:w-10/12 mx-auto">
+            <div class="navbar">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="-1"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li><a class="text-green-600 font-semibold">About</a></li>
+                            <li><a class="text-green-600 font-semibold">Gallery</a></li>
+                            <li><a class="text-green-600 font-semibold">Plant a Tree</a></li>
+                        </ul>
+                    </div>
+                    <a class="text-xl text-white font-bold cursor-pointer">Green Earth</a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a class="text-white font-semibold">About</a></li>
+                        <li><a class="text-white font-semibold">Gallery</a></li>
+                        <li><a class="text-white font-semibold">Plant a Tree</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a class="btn btn-sm btn-warning text-green-600 font-bold rounded-4xl">Plant a Tree</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="w-full md:w-10/12 mx-auto pb-5">
+        <h1 class="text-center py-10 font-bold text-xl">Choose Your Trees</h1>
+        <div class="grid grid-cols-12 gap-5">
+            <!-- sidebar -->
+            <div class="col-span-2 sticky top-10 self-start">
+                <h3 class="font-bold">Categories</h3>
+                <div class="mt-3 flex flex-col items-start gap-1 text-sm">
+                    <button
+                        class="bg-success w-full text-left px-2 py-1 rounded text-white font-semibold cursor-pointer">All
+                        Trees</button>
+                    <button
+                        class="hover:bg-success w-full text-left px-2 py-1 rounded hover:text-white font-semibold cursor-pointer">Fruit
+                        Trees</button>
+                    <button
+                        class="hover:bg-success w-full text-left px-2 py-1 rounded hover:text-white font-semibold cursor-pointer">Fruit
+                        Trees</button>
+                    <button
+                        class="hover:bg-success w-full text-left px-2 py-1 rounded hover:text-white font-semibold cursor-pointer">Fruit
+                        Trees</button>
+                    <button
+                        class="hover:bg-success w-full text-left px-2 py-1 rounded hover:text-white font-semibold cursor-pointer">Fruit
+                        Trees</button>
+                    <button
+                        class="hover:bg-success w-full text-left px-2 py-1 rounded hover:text-white font-semibold cursor-pointer">Fruit
+                        Trees</button>
+                </div>
+            </div>
+
+            <!-- cards area -->
+            <div class="col-span-8 grid grid-cols-3 gap-5">
+                <div class="card shadow-sm p-4 bg-slate-50">
+                    <figure>
+                        <img src="https://i.ibb.co.com/cSQdg7tf/mango-min.jpg" alt="Tree"
+                            class="h-60 w-full object-cover" />
+                    </figure>
+                    <div class="mt-5 space-y-3">
+                        <h2 class="text-xl font-bold">Card Title</h2>
+                        <p class="line-clamp-2 text-gray-500 text-sm">A card component has a figure, a body part, and
+                            inside body there are title and actions parts
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <p class="badge badge-success text-xs text-white font-bold rounded-xl px-3">Fruit Tree</p>
+                            <p class="font-bold">৳500</p>
+                        </div>
+
+                        <button class="btn btn-success text-white font-bold w-full rounded-4xl">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- cart area -->
+            <div class="bg-white col-span-2 rounded px-2 py-1">
+                <h3 class="font-bold text-right">Cart</h3>
+                <div class="mt-3 space-y-2 border-b border-gray-600 border-dotted pb-4">
+                    <div class="flex justify-between items-center px-2 py-2 rounded bg-green-50">
+                        <div class="space-y-1">
+                            <h2 class="font-semibold">Mango Tree</h2>
+                            <p class="text-sm text-gray-600">৳ <span>500</span> x <span>1</span></p>
+                        </div>
+                        <h1 class="text-error font-bold cursor-pointer text-xl">X</h1>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-2 font-bold text-sm">
+                    <h1>Total:</h1>
+                    <h1>৳ <span>1000</span></h1>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="./javascript/script.js"></script>
 </body>
